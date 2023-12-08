@@ -1,9 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Rquirement : 
+NextJS 14.0.4
 
 ## Getting Started
 
-First, run the development server:
-
+1. Install NextJS 
+```bash
+npx create-next-app@latest ./
+```
+2. Jalankan NewxtJS
 ```bash
 npm run dev
 # or
