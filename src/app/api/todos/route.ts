@@ -12,7 +12,28 @@ export async function GET() {
     return NextResponse.json(todos)
 }
 
-export async function DELETE(request: REQUEST) {
+export async function POST(request: Request) {
+    const { userId, title }: Partial<Todo> = await request.json()
+
+    if (!userId || !title) return NextResponse.json({ "message": "Missing required data" })
+
+    const res = await fetch(DATA_SOURCE_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'API-KEY': API_KEY
+        },
+        body: JSON.stringify({
+            userId, title, completed: false 
+        })
+    })
+
+    const newTodo: Todo = await res.json()
+
+    return NextResponse.json(newTodo)
+}
+
+export async function DELETE(request: Request) {
     const { id }: Partial<Todo> = await request.json()
 
     if (!id) return NextResponse.json({ "message": "Todo id required" })
